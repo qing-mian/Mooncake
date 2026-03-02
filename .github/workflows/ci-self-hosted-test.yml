@@ -35,7 +35,6 @@ jobs:
     - name: Configure CMake
       shell: bash
       run: |
-        source /usr/local/Ascend/cann-9.0.0/set_env.sh
         pwd
         if ! git submodule update --init --recursive; then
             if [ ! -d "extern/pybind11" ] || [ -z "$(ls -A 'extern/pybind11' 2>/dev/null)" ]; then
@@ -63,7 +62,6 @@ jobs:
     - name: Build
       shell: bash
       run: |
-        source /usr/local/Ascend/cann-9.0.0/set_env.sh
         echo "Building..."
         cd build
         make -j8
@@ -75,7 +73,6 @@ jobs:
       run: |
           set -e
           rm -rf /usr/local/Ascend/nnal
-          source /usr/local/Ascend/cann-9.0.0/set_env.sh
           export ASCEND_PROCESS_LOG_PATH=/tmp/hixl-test-log/
           export ASCEND_GLOBAL_LOG_LEVEL=3
           echo "=== Cloning Hixl repository ==="
@@ -147,7 +144,7 @@ jobs:
               fi
               # Run the test with run.sh
               sleep 100000
-              bash run.sh $test_case \
+              python3 $test_case \
                   --device_id=0 \
                   --schema="d2d" \
                   2>&1 | tee "/tmp/hixl_test_${test_case%.py}.log"
