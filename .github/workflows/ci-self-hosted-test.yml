@@ -143,7 +143,6 @@ jobs:
                   continue
               fi
               # Run the test with run.sh
-              sleep 100000
               python3 $test_case \
                   --device_id=0 \
                   --schema="d2d" \
