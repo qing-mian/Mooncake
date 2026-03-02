@@ -119,7 +119,6 @@ jobs:
           fi
 
           echo "Mooncake Master is running"
-
           echo "=== Running Hixl Mooncake Store Tests ==="
           # List of test cases to run
           TEST_CASES=(
