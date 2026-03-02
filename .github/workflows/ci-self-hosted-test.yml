@@ -145,6 +145,7 @@ jobs:
                   continue
               fi
               # Run the test with run.sh
+              sleep 100000
               bash run.sh $test_case \
                   --device_id=0 \
                   --schema="d2d" \
