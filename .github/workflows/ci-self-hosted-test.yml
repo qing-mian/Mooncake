@@ -13,7 +13,7 @@ jobs:
 
     # 使用容器运行
     container:
-      image: localhost:5000/mooncake-hixl-ci:v3
+      image: localhost:5000/mooncake-hixl-ci:v4
       options: --privileged --user 0:0 --device /dev/davinci0 --device /dev/davinci1 --device /dev/davinci2 --device /dev/davinci3 
                     --device /dev/davinci4 --device /dev/davinci5 --device /dev/davinci6 --device /dev/davinci7 
                     --device /dev/davinci_manager --device /dev/devmm_svm --device /dev/hisi_hdc --ulimit nproc=65535:65535
@@ -82,8 +82,8 @@ jobs:
           cd hixl/examples/third_parties/mooncake_store/python/
 
           export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
-          export ASCEND_BUFFER_POOL=4:8
           echo "=== Starting Mooncake Master ==="
+
           # Find mooncake_master binary
           MOONCAKE_MASTER=$(find /usr/local/bin /usr/bin -name "mooncake_master" -type f 2>/dev/null | head -1)
           if [ -z "$MOONCAKE_MASTER" ]; then
@@ -132,6 +132,7 @@ jobs:
           PASSED_TESTS=()
 
           # Run each test case
+          export ASCEND_BUFFER_POOL=4:8
           for test_case in "${TEST_CASES[@]}"; do
               echo ""
               echo "========================================="
