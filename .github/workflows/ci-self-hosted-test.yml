@@ -74,6 +74,7 @@ jobs:
       shell: bash
       run: |
           set -e
+          rm -rf /usr/local/Ascend/nnal
           source /usr/local/Ascend/cann-9.0.0/set_env.sh
           export ASCEND_PROCESS_LOG_PATH=/tmp/hixl-test-log/
           export ASCEND_GLOBAL_LOG_LEVEL=3
@@ -145,7 +146,6 @@ jobs:
                   continue
               fi
               # Run the test with run.sh
-              sleep 100000
               bash run.sh $test_case \
                   --device_id=0 \
                   --schema="d2d" \
