@@ -105,7 +105,7 @@ echo -e "system packages installed successfully."
 export CPLUS_INCLUDE_PATH=$(echo $CPLUS_INCLUDE_PATH | tr ':' '\n' | grep -v "/usr/local/Ascend" | paste -sd: -)
 
 # Install yalantinglibs
-clone_repo_if_not_exists "yalantinglibs" "https://gitcode.com/gh_mirrors/ya/yaml-cpp.git"
+clone_repo_if_not_exists "yalantinglibs" "https://gitcode.com/gh_mirrors/ya/yalantinglibs.git"
 cd yalantinglibs || exit
 git checkout 0.5.5
 rm -rf build
