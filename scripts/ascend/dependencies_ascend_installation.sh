@@ -116,9 +116,3 @@ make install
 cd ../..
 
 echo -e "yalantinglibs installed successfully."
-
-# Add the so package to the environment variables
-cp libascend_transport_mem.so /usr/local/Ascend/ascend-toolkit/latest/python/site-packages
-
-# Pip install whl
-pip install mooncake_transfer_engine*.whl --force
