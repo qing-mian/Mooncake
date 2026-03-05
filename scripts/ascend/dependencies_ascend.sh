@@ -69,7 +69,8 @@ if command -v apt-get &> /dev/null; then
             pkg-config \
             patchelf \
             mpich \
-            libmpich-dev
+            libmpich-dev \
+            libzstd-dev
     apt purge -y openmpi-bin libopenmpi-dev || true
 elif command -v yum &> /dev/null; then
     echo "Detected yum. Using Red Hat-based package manager."
@@ -86,6 +87,7 @@ elif command -v yum &> /dev/null; then
             hiredis-devel \
             libcurl-devel \
             jsoncpp-devel \
+            libzstd-devel \
             mpich \
             mpich-devel
     # Install yaml-cpp
