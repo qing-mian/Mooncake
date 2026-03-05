@@ -122,8 +122,8 @@ jobs:
           echo "=== Running Hixl Mooncake Store Tests ==="
           # List of test cases to run
           TEST_CASES=(
-              "batch_put_get_multi_buffers_sample.py"
               "batch_put_get_sample.py"
+              "batch_put_get_multi_buffers_sample.py"
           )
 
           # Track test results
@@ -146,6 +146,7 @@ jobs:
               python3 $test_case \
                   --device_id=0 \
                   --schema="d2d" \
+                  --rank=0
                   2>&1 | tee "/tmp/hixl_test_${test_case%.py}.log"
 
               TEST_RESULT=${PIPESTATUS[0]}
